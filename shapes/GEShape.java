@@ -7,8 +7,6 @@ import java.awt.Rectangle;
 import utils.GEAnchorList;
 import constants.GEConstants.EAnchorTypes;
 import java.awt.Color;
-
-import java.awt.geom.AffineTransform;
 	
 
 	public abstract class GEShape { //추상클래스로 만들기
@@ -20,13 +18,8 @@ import java.awt.geom.AffineTransform;
 	protected EAnchorTypes selectedAnchor;
 	protected Color lineColor,fillColor;
 	
-	protected AffineTransform affineTransform;
-	
 	public GEShape(Shape shape){ //	생성자
 		this.myShape=shape;
-		
-		affineTransform= new AffineTransform();
-		
 		anchorList=null;
 		selected=false;
 	}	
@@ -39,14 +32,6 @@ import java.awt.geom.AffineTransform;
 		this.fillColor=fillColor;	
 	}	
 	
-	public GEAnchorList getAnchorList(){
-		return anchorList;
-	}
-
-	public void setAnchorList(GEAnchorList anchorList){
-		this.anchorList= anchorList;
-	}
-	
 	public void draw(Graphics2D g2D){
 		//g2D.draw(myShape);
 		if(this.fillColor!= null){
@@ -58,8 +43,7 @@ import java.awt.geom.AffineTransform;
 			g2D.draw(myShape);
 		}
 		if(selected){
-			this.getAnchorList().setPosition(myShape.getBounds());
-			this.getAnchorList().draw(g2D);
+			anchorList.draw(g2D);
 		}
 	}
 	public void setSelected(boolean selected){
@@ -79,12 +63,6 @@ import java.awt.geom.AffineTransform;
 		}
 		return myShape.intersects(new Rectangle(p.x,p.y,2,2));
 	}
-	
-	public void moveCoordinate(Point moveP){
-		affineTransform.setToTranslation(moveP.getX(), moveP.getY());
-		myShape = affineTransform.createTransformedShape(myShape);
-	}
-	
 	abstract public void initDraw(Point startP);
 	abstract public void setCoordinate(Point curretP);
 	abstract public GEShape clone(); 

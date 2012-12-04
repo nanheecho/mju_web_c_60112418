@@ -34,7 +34,7 @@ public class GEConstants {
 	//gedrawingpanel 상속추가
 	public static final Color FORGROUD_COLOR = Color.BLACK;
 	public static final Color BACKGROUD_COLOR = Color.WHITE;
-	public static enum EState{Idle,TwoPointsDrawing,NPointsDrawing, Moving}
+	public static enum EState{Idle,TwoPointsDrawing,NPointsDrawing}
 	public final static Color COLOR_LINE_DEFAULT=Color.BLACK;
 	public final static Color COLOR_FILL_DEFAULT=Color.WHITE;
 	
