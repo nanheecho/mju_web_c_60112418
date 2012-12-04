@@ -16,10 +16,6 @@ public class GEEllipse extends GEShape {
 	public void setCoordinate(Point currentP){
 		Ellipse2D tempEllipse = ( Ellipse2D)myShape;
 		tempEllipse.setFrameFromDiagonal(startP.x,startP.y,currentP.x , currentP.y);
-		if(anchorList!=null){
-			anchorList.setPosition(myShape.getBounds());
-		}
-	
 	}
 	public GEShape clone(){
 		return new GEEllipse();

@@ -1,28 +1,12 @@
 package shapes;
-
-import java.awt.Point;
-import java.awt.Polygon;
-
+//ponint polygon import해주기
 public class GEPolygon extends GEShape{
-	public GEPolygon(){
-		super(new Polygon());
-	}
+	//생성자 init,setcoordianate 상속
+
 	
-	public void initDraw(Point p){
-		((Polygon)myShape).addPoint(p.x,p.y);
-	}
-	public void setCoordinate(Point p){
-		Polygon tempPolygon = (Polygon)myShape;
-		tempPolygon.xpoints[((Polygon)myShape).npoints-1]=p.x;
-		tempPolygon.ypoints[((Polygon)myShape).npoints-1]=p.y;
-		if(anchorList!=null){
-			anchorList.setPosition(myShape.getBounds());
-		}
-	}
+	((Polygon)myshape).xpoints
 	public void continueDrawing(Point p){
-		((Polygon)myShape).addPoint(p.x,p.y);
+		마이쉐잎.에드포인트
 	}
-	public GEShape clone(){
-		return new GEPolygon();
-	}
+	//
 }

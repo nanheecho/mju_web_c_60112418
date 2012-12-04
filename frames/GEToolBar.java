@@ -56,11 +56,9 @@ public class GEToolBar extends JToolBar {
 				drawingPanel.setCurrentShape(new GEEllipse());
 			}else if(button.getActionCommand().equals(EToolBarButtons.Line.name())){
 				drawingPanel.setCurrentShape(new GELine());
-	//1120
 			}else if(button.getActionCommand().equals(EToolBarButtons.Polygon.name())){
 				drawingPanel.setCurrentShape(new GEPolygon());
-			}else if(button.getActionCommand().equals(EToolBarButtons.Select.toString())){
-				drawingPanel.setCurrentShape(null);
+		
 			}
 		}
 	}
