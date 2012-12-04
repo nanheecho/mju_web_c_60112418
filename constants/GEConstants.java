@@ -36,6 +36,13 @@ public class GEConstants {
 	public static final Color FORGROUD_COLOR = Color.BLACK;
 	public static final Color BACKGROUD_COLOR = Color.WHITE;
 	
-	
+	//1120
+	public static enum EState{Idle,TwoPointsDrawing,NPointsDrawing}
+	public static final int ANCHOR_W=6;
+	public static final int ANCHOR_H=6;
+	public static final int RR_OFFSET=40;
+	public static final Color ANCHOR_LINECOLOR=Color.BLACK;
+	public static final Color ANCHOR_FILLCOLOR=Color.WHITE;
+	public static enum EAnchorTypes{NW,NN,NE,WW,EE,SW,SS,SE,RR,NONE}
 
 }

@@ -18,7 +18,9 @@ public class GERectangle extends GEShape{
 		Rectangle tempRectangle = (Rectangle)myShape;
 		tempRectangle.setFrameFromDiagonal(startP.x,startP.y,currentP.x , currentP.y); //setframe~이거는 빼기연산안해도됨
 		
-		//rectangle.setFrame(startP.x,startP.y,currentP.x-startP.x , currentP.y-startP.y);
+		if(anchorList!=null){
+			anchorList.setPosition(myShape.getBounds());
+		}
 	}
 	public GEShape clone(){
 		return new GERectangle();
