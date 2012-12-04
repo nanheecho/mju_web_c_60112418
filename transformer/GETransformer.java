@@ -9,6 +9,8 @@ import constants.GEConstants;
 	protected GEShape shape;
 	protected BasicStroke dashedLineStroke;
 	
+	protected Point previousP;
+	
 	public GETransformer(GEShape shape){
 		this.shape=shape;
 		float dashes[] = {GEConstants.DEFAULT_DASH_OFFSET};
@@ -17,6 +19,6 @@ import constants.GEConstants;
 				BasicStroke.CAP_ROUND,
 				BasicStroke.JOIN_ROUND,10,dashes,0);
 	}
-	
+	abstract public void init(Point p);
 	abstract public void transfomer(Graphics2D g2D,Point p);
 }

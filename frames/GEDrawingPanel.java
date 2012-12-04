@@ -14,6 +14,8 @@ import transformer.GETransformer;
 import constants.GEConstants;
 import constants.GEConstants.EState;
 import java.awt.Color;
+
+import transformer.GEMover;
 /////////^^^^^^
 public class GEDrawingPanel extends JPanel {
 	private MouseDrawingHandler drawingHandler;
@@ -111,6 +113,10 @@ public class GEDrawingPanel extends JPanel {
 					clearSeletedShapes();
 					selectedShape=null;/////////////////////////////////###
 					initDraw(e.getPoint());
+					
+					transformer = new GEDrawer(currentShape);
+					((GEDrawer)transformer).init(e.getPoint());
+					
 					if(currentShape instanceof GEPolygon){
 						currentState=EState.NPointsDrawing;
 					}else{
@@ -121,6 +127,10 @@ public class GEDrawingPanel extends JPanel {
 						if(selectedShape!=null){
 							clearSeletedShapes();
 							selectedShape.setSelected(true);
+							
+							transformer=new GEMover(selectedShape);
+							currentState= EState.Moving;
+							((GEMover)transformer).init(e.getPoint());
 						}
 					}					
 			}
@@ -147,6 +157,7 @@ public class GEDrawingPanel extends JPanel {
 			}else if(currentState==EState.NPointsDrawing){
 				return;
 			}
+			currentState=EState.Idle;
 			repaint();
 		}
 		public void mouseClicked(MouseEvent e){
