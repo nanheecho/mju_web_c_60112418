@@ -5,7 +5,7 @@ import java.awt.Point;
 import java.util.ArrayList;
 import shapes.GEShape;
 import shapes.GEPolygon;
-import constants.GEConstants;
+
 public class GEDrawer extends GETransformer{
 	
 	public GEDrawer(GEShape shape){
@@ -17,8 +17,7 @@ public class GEDrawer extends GETransformer{
 	}
 
 	public void transfomer(Graphics2D g2D,Point p){
-		g2D.setXORMode(GEConstants.BACKGROUD_COLOR);
-		g2D.setStroke(dashedLineStroke); //¼± »ö
+		g2D.setXORMode(g2D.getBackground());
 		shape.draw(g2D);
 		shape.setCoordinate(p);
 		shape.draw(g2D);
