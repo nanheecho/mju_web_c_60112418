@@ -6,42 +6,23 @@ import java.awt.Shape;//////////////////////////////////////^^
 import java.awt.Rectangle;
 import utils.GEAnchorList;
 import constants.GEConstants.EAnchorTypes;
-import java.awt.Color;
-	
 
-	public abstract class GEShape { //추상클래스로 만들기
+public abstract class GEShape { //추상클래스로 만들기
 	
 	protected Shape myShape;
 	protected Point startP;
+	//1120
 	protected boolean selected;
 	protected GEAnchorList anchorList;
 	protected EAnchorTypes selectedAnchor;
-	protected Color lineColor,fillColor;
 	
 	public GEShape(Shape shape){ //	생성자
 		this.myShape=shape;
 		anchorList=null;
 		selected=false;
 	}	
-	
-	public void setLineColor(Color lineColor){
-	this.lineColor=lineColor;	
-	}	
-	
-	public void setFillColor(Color fillColor){		
-		this.fillColor=fillColor;	
-	}	
-	
 	public void draw(Graphics2D g2D){
-		//g2D.draw(myShape);
-		if(this.fillColor!= null){
-			g2D.setColor(this.fillColor);
-			g2D.fill(myShape);
-		}
-		if(this.lineColor!=null){
-			g2D.setColor(this.lineColor);
-			g2D.draw(myShape);
-		}
+		g2D.draw(myShape);
 		if(selected){
 			anchorList.draw(g2D);
 		}

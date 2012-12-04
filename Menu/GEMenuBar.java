@@ -2,7 +2,7 @@ package Menu;
 
 import javax.swing.JMenuBar;
 import constants.GEConstants;
-import frames.GEDrawingPanel;
+
 
 public class GEMenuBar extends JMenuBar {
 
@@ -17,8 +17,5 @@ public class GEMenuBar extends JMenuBar {
 		this.add(editMenu);
 		colorMenu =new GEMenuColor(GEConstants.TITLE_COLORMENU);
 		this.add(colorMenu);
-	}
-	public void init(GEDrawingPanel dp){
-		colorMenu.init(dp);
 	}
 }
