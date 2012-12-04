@@ -16,7 +16,7 @@ public class GEDrawingPanel extends JPanel {
 	private GEShape currentShape;
 	private ArrayList<GEShape> shapeList;  //************
 
-	//private EState currentState;
+	
 	public GEDrawingPanel(){
 		super();
 		shapeList= new ArrayList<GEShape>();
@@ -55,26 +55,17 @@ public class GEDrawingPanel extends JPanel {
 	private void finishDraw(GEShape shape){
 		shapeList.add(shape);
 	}
-	
-	//컨티뉴드로윙이라는 함수 추가.1120
-	
 	private class MouseDrawingHandler extends MouseInputAdapter{
 		public void mousePressed(MouseEvent e){
 			initDraw(e.getPoint());
-			//추가1 120
-			/*if
-				if
-				else*/
+			
 		}
 		public void mouseDragged(MouseEvent e){
-		// if(currentState!=EState.Idle){1120
 			animateDraw(e.getPoint());
 		}
 		
 		public void mouseReleased(MouseEvent e){
-			//if(currentState==EState.TwoPintsDrawing1120
 			finishDraw(currentShape);
 		}
-		//무브드if currentState==estate.npointsdrawing,클릭드함수(클릭1한번인지2번인지) 추가 1120
 	}
 }

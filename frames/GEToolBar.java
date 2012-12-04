@@ -13,7 +13,6 @@ import java.awt.event.ActionListener;
 import shapes.GEEllipse;
 import shapes.GERectangle;
 import shapes.GELine;
-import shapes.GEPolygon;
 
 public class GEToolBar extends JToolBar {
 	private GEDrawingPanel drawingPanel;
@@ -56,9 +55,6 @@ public class GEToolBar extends JToolBar {
 				drawingPanel.setCurrentShape(new GEEllipse());
 			}else if(button.getActionCommand().equals(EToolBarButtons.Line.name())){
 				drawingPanel.setCurrentShape(new GELine());
-			}else if(button.getActionCommand().equals(EToolBarButtons.Polygon.name())){
-				drawingPanel.setCurrentShape(new GEPolygon());
-		
 			}
 		}
 	}

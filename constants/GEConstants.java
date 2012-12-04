@@ -36,6 +36,6 @@ public class GEConstants {
 	public static final Color FORGROUD_COLOR = Color.BLACK;
 	public static final Color BACKGROUD_COLOR = Color.WHITE;
 	
-	//public static enum EState{idle,two~};
+	
 
 }
