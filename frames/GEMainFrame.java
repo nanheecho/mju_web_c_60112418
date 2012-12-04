@@ -13,7 +13,7 @@ public class GEMainFrame extends JFrame{ //제이프래임 상속받기
 		private static GEMainFrame uniaueMainFrame= new GEMainFrame(GEConstants.title_mainframe);
 		private GEDrawingPanel drawingpanel;
 		private GEMenuBar menuBar;
-		private GEToolBar shapeToolbar; //##
+		private GEToolBar shapeToolbar; 
 		
 		
 		private GEMainFrame(String title){
@@ -36,6 +36,7 @@ public class GEMainFrame extends JFrame{ //제이프래임 상속받기
 		}
 
 		public  void init(){
+			menuBar.init(drawingpanel);
 			shapeToolbar.init(drawingpanel);  //버튼이 눌리면 드로잉패널에게 그도형 알려줌
 			
 			setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

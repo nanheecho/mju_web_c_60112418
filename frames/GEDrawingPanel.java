@@ -6,7 +6,6 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;//shapeList
-import javax.swing.JPanel;
 import javax.swing.event.MouseInputAdapter;
 import shapes.GEPolygon;
 import shapes.GEShape;
@@ -14,7 +13,7 @@ import transformer.GEDrawer;
 import transformer.GETransformer;
 import constants.GEConstants;
 import constants.GEConstants.EState;
-
+import java.awt.Color;
 /////////^^^^^^
 public class GEDrawingPanel extends JPanel {
 	private MouseDrawingHandler drawingHandler;
@@ -22,6 +21,7 @@ public class GEDrawingPanel extends JPanel {
 	private ArrayList<GEShape> shapeList;  //************
 	private EState currentState;
 	private GETransformer transformer;
+	private Color lineColor, fillColor;
 	
 	public GEDrawingPanel(){
 		super();
@@ -33,6 +33,35 @@ public class GEDrawingPanel extends JPanel {
 		this.setForeground(GEConstants.FORGROUD_COLOR);
 		this.setBackground(GEConstants.BACKGROUD_COLOR);
 		
+		initializeGraphicsAttribute();
+	}
+	private void initializeGraphicsAttribute(){
+			lineColor= GEConstants.COLOR_LINE_DEFAULT;
+			fillColor= GEConstants.COLOR_FILL_DEFAULT;
+	}
+	public void setLineColor(Color lineColor){
+		if(selectedSetColor(true,lineColor)){
+			return;
+		}
+		this.lineColor=lineColor;
+	}
+	public void setFillColor(Color fillColor){
+		if(selectedSetColor(true,fillColor)){
+			return;
+		}
+		this.fillColor=fillColor;
+	}
+	public boolean selectedSetColor(boolean flag, Color color){
+		if(selectedShape!=null){
+			if(flag){
+			selectedShape.setLineColor(color);
+			}else{
+				selectedShape.setFillColor(color);
+			}
+			repaint();
+			return true;
+		}
+		return false;
 	}
 	
 	public void setCurrentShape(GEShape currentShape){
@@ -50,6 +79,8 @@ public class GEDrawingPanel extends JPanel {
 	
 	private void initDraw(Point startP){
 		currentShape = currentShape.clone();
+		currentShape.setLineColor(lineColor);
+		currentShape.setFillColor(fillColor);
 		transformer=new GEDrawer(currentShape);
 		((GEDrawer)transformer).init(startP);
 	}
@@ -78,7 +109,7 @@ public class GEDrawingPanel extends JPanel {
 			if(currentState==EState.Idle){
 				if(currentShape!=null){
 					clearSeletedShapes();
-			
+					selectedShape=null;/////////////////////////////////###
 					initDraw(e.getPoint());
 					if(currentShape instanceof GEPolygon){
 						currentState=EState.NPointsDrawing;
@@ -97,7 +128,7 @@ public class GEDrawingPanel extends JPanel {
 		
 		public void mouseMoved(MouseEvent e){
 			if(currentState==EState.NPointsDrawing){
-				transformer.transfomer(
+				((GEDrawer)transformer).transfomer(/////////////////###
 						(Graphics2D)getGraphics(),e.getPoint());
 			}
 		}
